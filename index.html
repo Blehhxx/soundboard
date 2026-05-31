@@ -2,37 +2,54 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body {
-            background: rgba(169,130,180, 0.95);
-            color: #a982b4;
+        /* Centers the widget container perfectly on any screen size */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background: #191919; /* Dark background to make your purple widget pop */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Wraps your design changes into a locked, centered box */
+        .widget-container {
+            background: rgba(169, 130, 180, 0.95); /* Your new background color */
+            color: #ffffff; /* Switched text to white for clear readability against purple */
             font-family: 'Segoe UI', sans-serif;
             border-radius: 12px;
             padding: 16px;
-            width: 200px;
+            width: 240px; /* Locked width so it stays a neat, fixed widget size */
+            box-sizing: border-box;
             text-align: center;
-            margin: 0;
-            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
+
         h3 { 
             margin-top: 0; 
             margin-bottom: 15px;
             font-size: 14px; 
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: #643d6e; 
+            color: #643d6e; /* Your new dark purple header color */
         }
+
         .meme-img {
             width: 100%;
             height: auto;
             border-radius: 8px;
             margin-bottom: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
+
         .btn {
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.12); /* Slightly adjusted for better contrast on purple */
             color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             padding: 12px;
             margin: 6px 0;
             width: 100%;
@@ -46,34 +63,37 @@
             font-size: 14px;
             transition: all 0.2s ease;
         }
+
         .btn:hover { 
-            background: rgba(255, 255, 255, 0.15); 
-            border-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.22); 
+            border-color: rgba(255, 255, 255, 0.3);
         }
+
         .btn:active { 
             transform: scale(0.96); 
-            background: rgba(0, 173, 181, 0.4);
+            background: rgba(100, 61, 110, 0.6); /* Active color uses your custom dark purple tint */
         }
     </style>
 </head>
 <body>
 
-    <h3>✨ Sound Board</h3>
+    <div class="widget-container">
+        <h3>✨ Sound Board</h3>
 
-    <img src="CatMeme.jpg" alt="Cat Meme" class="meme-img">
+        <img src="CatMeme.jpg" alt="Cat Meme" class="meme-img">
 
-    <button class="btn" onclick="playSound('Clap.mp3')">👏 Clapping</button>
-    <button class="btn" onclick="playSound('Wow.mp3')">😮 Wowww</button>
-    <button class="btn" onclick="playSound('Sad-Trumpet.mp3')">🎺 Sad Trumpet</button>
-    <button class="btn" onclick="playSound('Fahhhh.mp3')">🫢 Fahhhh</button>
-    <button class="btn" onclick="playSound('Sad-Meow.mp3')">😿 Sad Meow</button>
-    <button class="btn" onclick="playSound('Justin-Time.mp3', 14)">🎵 Justin-Time</button>
+        <button class="btn" onclick="playSound('Clap.mp3')">👏 Clapping</button>
+        <button class="btn" onclick="playSound('Wow.mp3')">😮 Wowww</button>
+        <button class="btn" onclick="playSound('Sad-Trumpet.mp3')">🎺 Sad Trumpet</button>
+        <button class="btn" onclick="playSound('Fahhhh.mp3')">🫢 Fahhhh</button>
+        <button class="btn" onclick="playSound('Sad-Meow.mp3')">😿 Sad Meow</button>
+        <button class="btn" onclick="playSound('Justin-Time.mp3', 14)">🎵 Justin-Time</button>
+    </div>
 
     <script>
         var currentAudio = null;
         var stopTimer = null;
 
-        // Added 'startTime' parameter, defaults to 0 if not specified
         function playSound(file, startTime) {
             var startFromSeconds = startTime || 0;
 
